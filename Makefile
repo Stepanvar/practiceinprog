@@ -1,5 +1,5 @@
-SRCS = main.c
-NAME = libft
+SRCS = c_module.c
+NAME = c_module
 GCC = gcc
 HEAD = header.h
 OBJS = $(SRCS:.c=.o)
