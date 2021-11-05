@@ -6,6 +6,7 @@ int fib(int n)
     return n;
   return fib(n-1) + fib(n-2);
 }
+
 static PyObject*	c_fib(PyObject *self, PyObject *args)
 {
 	int n;
@@ -15,6 +16,7 @@ static PyObject*	c_fib(PyObject *self, PyObject *args)
 	return PyLong_FromLong(n);
 
 }
+
 float Q_rsqrt(float number)
 {
 	long num;
@@ -45,6 +47,7 @@ PyMethodDef module_methods[] =
 	{"c_fib", c_fib, METH_VARARGS, "Method description"}, 
 	{"c_Q_rsqrt", c_Q_rsqrt, METH_VARARGS, "Method description"}, {NULL}// this struct signals the end of the array
 };
+
 struct PyModuleDef func_module =
 {
     PyModuleDef_HEAD_INIT, // Always initialize this member to PyModuleDef_HEAD_INIT
