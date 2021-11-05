@@ -9,7 +9,7 @@ RM = del /f
 $(NAME): $(OBJS)
 	$(GCC) $(FLAGS) -o $(NAME) $(OBJS)
 .c.o: $(SRCS) 
-	$(GCC) $(FLAGS)  -o $(OBJS) -c $(SRCS)
+	$(GCC) $(FLAGS) -c -o $@ $<
 all: $(NAME) $(OBJS) 
 clean: fclean
 	$(RM) $(OBJS)
