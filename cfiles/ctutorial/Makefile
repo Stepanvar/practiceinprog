@@ -1,12 +1,11 @@
-SRCS = $(wildcard *.c)
-NAME = types
+SRCS = $(wildcard ft_*.c)
+NAME = exec
 GCC = gcc
 HEAD = header.h
 OBJS = $(SRCS:.c=.o)
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra #-Werror
 RM = del /f
-.Phony: clean fclean re all
-.SUFFIXES: .c .o
+.Phony: clean fclean all
 $(NAME): $(OBJS)
 	$(GCC) $(FLAGS) $(OBJS) $(HEAD) -o $(NAME)
 .c.o: $(SRCS) 
@@ -17,5 +16,5 @@ clean: fclean
 fclean:
 	$(RM) $(NAME).exe
 re:
-	fclean all
+	clean all
 	
