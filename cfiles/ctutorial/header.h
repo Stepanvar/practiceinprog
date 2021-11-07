@@ -8,8 +8,12 @@
  void   ft_putchar(char symb);
  void   ft_putint(int num);
  void   ft_putstr(const char *str);
- void    ft_char(void);
- void    ft_float(void);
- void    ft_limits(void);
+ void   ft_char(void);
+ void   ft_float(void);
+ void   ft_limits(void);
  void   ft_str(void);
+ void   ft_storage_class(void);
+ int    ft_if(void);
+ void   ft_calc(int argc, char *argv[]);
+ int    ft_calc_inint(char *str1);
 #endif

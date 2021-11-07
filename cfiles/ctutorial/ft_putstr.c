@@ -3,7 +3,7 @@ void    ft_putstr(const char *str)
 {
 //    char *begin;
 //    begin = str;
-    while(str)
+    while(*str)
     {
         write(1, str, 1);
         str++;

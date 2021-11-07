@@ -3,7 +3,7 @@ NAME = exec
 GCC = gcc
 HEAD = header.h
 OBJS = $(SRCS:.c=.o)
-FLAGS = -Wall -Wextra #-Werror
+FLAGS = -Wall -Wextra -Werror
 RM = del /f
 .Phony: clean fclean all
 $(NAME): $(OBJS)
