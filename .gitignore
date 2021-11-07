@@ -1,2 +1,4 @@
 *.swp
 info.txt
+*.o
+*.exe

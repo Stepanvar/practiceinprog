@@ -1,8 +1,6 @@
 #include "header.h"
-extern int i = 5;
 void    ft_storage_class(void)
 {
-    printf("%d", i);
     auto int i;
     i = 10;
     printf("%d", i);

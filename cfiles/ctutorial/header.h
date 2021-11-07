@@ -16,4 +16,5 @@
  int    ft_if(void);
  void   ft_calc(int argc, char *argv[]);
  int    ft_calc_inint(char *str1);
+ void    ft_mas(void);
 #endif
