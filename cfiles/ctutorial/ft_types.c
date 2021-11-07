@@ -2,8 +2,10 @@
 int main(int argc, char *argv[])
 {
     //char    letter; 
-    //int     num, si;
+    //int     num;
 
+    //scanf("%d", &num);
+    //ft_putint(num);
     //ft_str();
     ft_calc(argc, argv);
     //ft_float();

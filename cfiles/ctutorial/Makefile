@@ -4,7 +4,7 @@ GCC = gcc
 HEAD = header.h
 OBJS = $(SRCS:.c=.o)
 FLAGS = -Wall -Wextra -Werror
-RM = del /f
+RM = rm -rf
 .Phony: clean fclean all
 $(NAME): $(OBJS)
 	$(GCC) $(FLAGS) $(OBJS) $(HEAD) -o $(NAME)

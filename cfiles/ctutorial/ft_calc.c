@@ -15,14 +15,12 @@ void    ft_calc(int argc, char *argv[])
         if(*argv[2] == '+')
             ft_putint(first_num + second_num);
         if(*argv[2] == '*')
-            ft_putint(first_num * second_num);
+            first_num = first_num * second_num;
         if(*argv[2] == '/')
             ft_putint(first_num / second_num);
-        else
-        {
+        if (*argv[2] != '-' && *argv[2] != '+' && *argv[2] != '/' && *argv[2] != '*')
             write(1, "incorrect enter\n", 17);
-        }
     }
     else
-        write(1, "incorrect enter argc\n", 22);
+        write(1, "incorrect amount argc\n", 22);
 }
