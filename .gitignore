@@ -1,5 +1,5 @@
 *.swp
 info.txt
 *.o
-*.d
+libft/*.d
 *.exe
