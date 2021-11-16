@@ -1,5 +1,6 @@
 *.swp
 info.txt
 *.o
-libft/*.d
+*/*.o
+*/*.d
 *.exe
