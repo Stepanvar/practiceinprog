@@ -1,10 +1,9 @@
 SRCS = hello.c
 NAME = hello
 GCC = gcc
-#HEAD = header.h
 OBJS = $(SRCS:.c=.o)
 FLAGS = -Wall -Wextra -Werror
-RM = del /f
+RM = rm -rf
 .Phony: clean fclean re all
 $(NAME): $(OBJS)
 	$(GCC) $(FLAGS) -o $(NAME) $(OBJS)

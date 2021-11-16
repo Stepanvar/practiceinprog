@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static int	check(const char *c, long number, int minus)
+static int	check(const char *c, long long number, int minus)
 {
 	if (minus == 1)
 	{
