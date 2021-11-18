@@ -3,7 +3,6 @@ NAME = exe
 GCC = gcc
 FLAGS = -Wall -Werror -Wextra
 OBJS = $(SRCS:.c=.o)
-#HEAD = header.h
 .Phony: all clean fclean
 $(NAME): $(OBJS)
 	$(GCC) $(FLAGS) $(OBJS) -o $(NAME)
