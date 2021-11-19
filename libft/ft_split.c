@@ -44,48 +44,31 @@ static void	ft_free(char **mem)
 	free(mem);
 }
 
-static size_t	ft_word_len(const char *str, char c)
+static char	**ft_real_split(char const *str, char c)
 {
-	int	i;
+	char	**arr;
+	int		i;
+	int		nmb;
 
-	i = 0;
-	while (*str == c)
-		str++;
-	while (*str && *str != c)
-	{
-		i++;
-		str++;
-	}
-	return (i);
-}
-
-static char	**ft_real_split(char const *s, char c)
-{
-	size_t	word_count;
-	size_t	i;
-	char	**str;
-
-	if (!s)
-		return (NULL);
-	word_count = ft_nbr_word(s, c);
-	str = ft_calloc(word_count + 1, sizeof(char *));
 	if (!str)
-		return (0);
+		return (NULL);
 	i = 0;
-	while (word_count > i)
+	nmb = ft_nbr_word(str, c);
+	arr = (char **)ft_calloc(nmb + 1, sizeof(char *));
+	if (!arr)
+		return (0);
+	while (i < nmb)
 	{
-		while (*s == c)
-			s++;
-		str[i] = ft_substr(s, 0, ft_word_len(s, c));
-		if (!str[i++])
+		arr[i] = ft_substr(str, 0, (ft_strchr(str, c)) - str);
+		if (!arr[i++])
 		{
-			ft_free(str);
+			ft_free(arr);
 			return (NULL);
 		}
-		s += ft_word_len(s, c);
+		str += (ft_strchr(str, c)) - str + 1;
 	}
-	str[i] = NULL;
-	return (str);
+	arr[i] = NULL;
+	return (arr);
 }
 
 char	**ft_split(char const *s, char c)
