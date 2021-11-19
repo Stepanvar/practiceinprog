@@ -1,6 +1,7 @@
 *.swp
-info.txt
+*.txt
 *.o
 */*.o
 */*.d
 *.exe
+*.xlsx
