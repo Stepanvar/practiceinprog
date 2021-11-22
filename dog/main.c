@@ -25,7 +25,8 @@ static void	ft_print_field(char mas[10][21], int x, int y, t_apple apple)
 			if (i == y && j == x)
 				ft_putchar_fd('@', 1);
 			else if (i == apple.ay && j == apple.ax)
-				ft_putchar_fd('*', 1);
+				{ft_putchar_fd('*', 1);
+				write(1, "+1\n", 3);}
 			else
 				ft_putchar_fd(mas[i][j], 1);
 			j++;
