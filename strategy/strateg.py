@@ -3,14 +3,14 @@ import pygame as pg
 class	Info:
 	"""print information about name and attribures of instance
 	"""
-	def	_print_name(self, instance):
+	def _print_info(self, instance):
 		print(instance)
-	def	_print_attr(self, instance):
 		for attr in dir(instance):
 			if not attr.startswith('_'):
 				print(attr, end=':')
 				print(getattr(instance, attr), end=' ')
 		print("\n")
+
 
 class	Property(Info):
 	"""sell, buy, get_damage, del
@@ -30,23 +30,22 @@ class	Property(Info):
 			damage (int): damage to property
 
 		Returns:
-			int: health of building
-			int: remain damage
+			int: remain damage or -1 if property alive
 		"""
 		self.health = self.health - damage
 		if (self.health < 0):
-			damage -= self.health 
+			damage = -self.health 
 			self.health += damage
 			print ("property tottaly destroyed")
-			print ("health: %d, remain damage: %d\n" %(self.health, damage))
-			return self.health, damage
+			print ("remain damage: %d\n" %damage)
+			return damage
 		elif (self.health == 0):
 			print ("property destroyed")
-			print ("health: 0, remain damage: 0\n")
-			return 0, 0
+			print ("remain damage: 0\n")
+			return 0
 		else:
 			print ("property alive with health: %d\n" %self.health)
-			return self.health, 0
+			return -1
 
 
 class	UsersField(Info):
@@ -54,6 +53,13 @@ class	UsersField(Info):
 		self.activated_cards = []
 	def	_activate_card(self, instance):
 		self.activated_cards.append(instance)
+	def _cards_on_userfield(self):
+		self.nmb = 1
+		for card in self.activated_cards:
+			print("%d." %self.nmb, end='')
+			self._print_info(card)
+			self.nmb += 1
+
 
 class	Mine(Property, Info):
 	def	__init__(self):
@@ -114,8 +120,7 @@ class	User(Property, Info):
 		self.nmb = 1
 		for card in self.user_hand:
 			print("%d." %self.nmb, end='')
-			self._print_name(card)
-			self._print_attr(card)
+			self._print_info(card)
 			self.nmb += 1
 	def	__str__(self):
 		return "user"
@@ -153,26 +158,37 @@ class	Talon(Info):
 		return "talon"
 
 
-nmb_cards = int(input("enter amount of cards in game\n"))
+nmb_cards = int(input("Enter amount of cards in game\n"))
 talon1 = Talon(nmb_cards)
 user1 = User()
 user1._get_card(5)
 end = 1
+list_act = user1.user_activated_cards
 while (end):
 	user1._cards_in_hand()
-	i_hand = int(input("Enter index of card to activate\n")) - 1
-	if (user1.balance > 0 and user1.balance - user1.user_hand[i_hand].cost > 0 and i_hand in range(len(user1.user_hand))):
-		user1.user_hand.pop(i_hand)
-		user1.user_activated_cards._activate_card(user1.user_hand[i_hand])
-		user1.balance -= user1.user_hand[i_hand].cost
-		print("activated cards")
-		for i_active in range(len(user1.user_activated_cards.activated_cards)):
-			user1._print_name(user1.user_activated_cards.activated_cards[i_active])
-			user1._print_attr(user1.user_activated_cards.activated_cards[i_active])
-			if (type(user1.user_activated_cards.activated_cards[i_active]).__name__ == Spell.__name__):
-				i_attack = int(input("Choose property to attack\n")) - 1
-				user1.user_activated_cards.activated_cards[i_attack]._get_damage(user1.user_activated_cards.activated_cards[i_active].attack)
-				user1.user_activated_cards.activated_cards.pop(i_active)
+	if (len(user1.user_hand) > 0):
+		i_hand = int(input("Enter index of card to activate\n")) - 1
 	else:
-		print("you can't afford it")	
+		print ("no cards in hand\n")
+		break
+	if ((user1.balance > 0) and (user1.balance - user1.user_hand[i_hand].cost > 0) and (i_hand in range(len(user1.user_hand)))):
+		list_act._activate_card(user1.user_hand[i_hand])
+		user1.balance -= user1.user_hand[i_hand].cost
+		user1.user_hand.pop(i_hand)
+		print("activated cards")
+		for i_active in range(len(list_act.activated_cards)):
+			user1._print_info(list_act.activated_cards[i_active])
+			if (type(list_act.activated_cards[i_active]).__name__ == Spell.__name__):
+				i_attack = int(input("Choose property to attack\n")) - 1
+				remain = list_act.activated_cards[i_attack]._get_damage(list_act.activated_cards[i_active].attack)
+				list_act.activated_cards.pop(i_active)
+				while (remain > 0 and len(list_act.activated_cards)):
+					list_act.activated_cards.pop(i_attack)
+					list_act._cards_on_userfield()
+					i_attack = int(input("Choose property to attack\n")) - 1
+					remain = list_act.activated_cards[i_attack]._get_damage(remain)
+	else:
+		print("you can't afford it")
+	print("user health: %d\n" %user1.health)
+	print("user balance: %d\n" %user1.balance)
 	end = int(input("Do you want to continue your move? 1 - yes, 0 - no\n"))
