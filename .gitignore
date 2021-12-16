@@ -1,5 +1,5 @@
 *.swp
-*.txt
+*/*.txt
 *.o
 */*.o
 pyfiles/excel.py

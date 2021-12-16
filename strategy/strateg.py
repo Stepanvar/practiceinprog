@@ -11,7 +11,6 @@ class	Info:
 				print(getattr(instance, attr), end=' ')
 		print("\n")
 
-
 class	Property(Info):
 	"""sell, buy, get_damage, del
 	"""
@@ -47,7 +46,6 @@ class	Property(Info):
 			print ("property alive with health: %d\n" %self.health)
 			return -1
 
-
 class	UsersField(Info):
 	def	__init__(self):
 		self.activated_cards = []
@@ -59,7 +57,6 @@ class	UsersField(Info):
 			print("%d." %self.nmb, end='')
 			self._print_info(card)
 			self.nmb += 1
-
 
 class	Mine(Property, Info):
 	def	__init__(self):
@@ -156,7 +153,6 @@ class	Talon(Info):
 
 	def	__str__(self):
 		return "talon"
-
 
 nmb_cards = int(input("Enter amount of cards in game\n"))
 talon1 = Talon(nmb_cards)

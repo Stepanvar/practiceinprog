@@ -1,6 +1,7 @@
 #include <fcntl.h>
 #include "stdio.h"
 #include "stdlib.h"
+#include "unistd.h"
 #include "get_next_line.h"
 
 void	free_mem(char *str[])
@@ -15,6 +16,7 @@ void	free_mem(char *str[])
 	}
 	
 }
+
 char	*get_next_line(int fd)
 {
 	char		**buf;
