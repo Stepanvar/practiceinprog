@@ -1,31 +1,63 @@
 #include <fcntl.h>
 #include "stdio.h"
+#include "stdlib.h"
 #include "get_next_line.h"
 
+void	free_mem(char *str[])
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	
+}
 char	*get_next_line(int fd)
 {
-	char		*buf;
+	char		**buf;
 	int			size1;
-	//static	int	count = 0;
+	static int	i;
 
+	i = 1;
 	size1 = 1;
-	buf = (char *)ft_calloc(BUFFER_SIZE, 1);
-	while (size1)
+	if(size1) size1++;
+	if (-1 == fd)
+		return(NULL);
+	buf = (char **)ft_calloc(fd + 1, BUFFER_SIZE + 1);
+	if (!buf)
+		return (NULL);
+	while ((buf[fd][i - 1] != '\n') && size1)
 	{
-		size1 = read(fd, buf, sizeof(char));
+		size1 = read(fd, &(buf[fd][i]), 1);
 		printf("%d", size1);
+		if (-1 == size1)
+		{
+			free_mem(buf);
+			return (NULL);
+		}
+		i++;
 	}
-	return(buf);
+	return(buf[fd]);
 }
 
-int	main(void)
-{
-	int		fd;
-	char	*str;
+// int	main(int argc, char *argv[])
+// {
+// 	int		fd1;
+// 	//int		fd2;
+// 	char	*str;
 
-	fd = open("readme.txt", _O_RDONLY);
-	str = get_next_line(fd);
-	close(fd);
-	printf("%s", str);
-	return (0);
-}
+// 	if (argc == 1)
+// 		fd1 = 0;
+// 	fd1 = open(argv[1], O_RDONLY);
+// 	//fd2 = open(argv[2], O_RDONLY);
+// 	str = get_next_line(fd1);
+// 	printf("%s", str);
+// 	// str = get_next_line(fd1);
+// 	// printf("%s", str);
+// 	close(fd1);
+// 	//close(fd2);
+// 	return (0);
+// }
