@@ -1,5 +1,0 @@
-C:\\Users\\user\\gcC:\\bin:C:\\Program Files \(x86\)Common Files\\Oracle\\Java\\javapath:C:\\Program Files\\Intel\\WiFi\\bin:C:\\Program FilesCommon Files\\Intel\\WirelessCommon:C:\\WINDOWS\\system32:C:\\WINDOWS:C:\\WINDOWS\\System32\\Wbem:C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0:C:\\MinGW\\bin:C:\\Program Files\\Microsoft VS Code\\bin:C:\\Program Files\\LLVM\\bin:C:\\Program Files\\Python39\\:C:\\Program Files\\Git\\bin:C:\\Users\\user\\AppData\\Roaming\\Python\\Python39\\site-packages\\norminette:C:\\ProgramData\\Miniconda3\\condabin\\conda.bat
-
-
-token_v2:
-be5c3f243391fe852fcf836b629ea45226fb0c22e90049d4cb9af6419ed84630355c9e83b5b84308e1c07ede0a2bcf41f095472596927e04eedea5a5a5ba24a30268480e5959f4da5ca6f763c662
