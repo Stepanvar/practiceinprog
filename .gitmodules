@@ -1,3 +1,6 @@
 [submodule "cfiles/chardway"]
 	path = cfiles/chardway
 	url = https://github.com/Stepanvar/chardway.git
+[submodule "clanguage/prog21"]
+	path = clanguage/prog21
+	url = https://github.com/Stepanvar/prog21.git
