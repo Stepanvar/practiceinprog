@@ -1,3 +1,3 @@
-[submodule "get_next_line/gnl-tester"]
-	path = get_next_line/gnl-tester
-	url = https://github.com/AkkyOrz/gnl-tester.git
+[submodule "cfiles/chardway"]
+	path = cfiles/chardway
+	url = https://github.com/Stepanvar/chardway.git
