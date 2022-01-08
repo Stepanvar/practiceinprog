@@ -1,3 +1,6 @@
 [submodule "clanguage/prog21"]
 	path = clanguage/prog21
 	url = https://github.com/Stepanvar/prog21.git
+[submodule "clanguage/self_education"]
+	path = clanguage/self_education
+	url = https://github.com/Stepanvar/self_education.git
