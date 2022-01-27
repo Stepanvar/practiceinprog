@@ -2,7 +2,7 @@
 */*.txt
 *.o
 */*.o
-pyfiles/excel.py
+excel.py
 */*.d
 *.exe
 *.xlsx
